@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/style.css?t=90051322">
+    <link rel="stylesheet" href="../style.css?t=5773309e">
+    <script src="../assets/script.js?t=93f1a66c"></script>
+    <script src="https://use.fontawesome.com/ea731dcb6f.js"></script>
+    <title>The Callback Payload - Route4Me API Tutorials</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="menu toc-menu">
+        <ul>
+          <li class="menu-item -level-0 -parent">
+            <ul class="submenu">
+              <li class="menu-item -level-1"><a class="link title  link-index" href="../index.html">Route4Me API Tutorials</a>
+              </li>
+              <li class="menu-item -level-1 -parent"><a class="link title  link-a-feed" href="../a-feed/index.html">Activity Feed</a>
+                <ul class="submenu">
+                  <li class="menu-item -level-2"><a class="link title  link-a-feedprovide-callback-url" href="../a-feed/provide-callback-url.html">Providing a Callback/Webhook URL for Receiving Activity Feed Notifications</a>
+                  </li>
+                  <li class="menu-item -level-2"><a class="link title -active link-a-feedcallback-payload" href="../a-feed/callback-payload.html">The Callback Payload</a>
+                  </li>
+                  <li class="menu-item -level-2"><a class="link title  link-a-feedsupported-activities" href="../a-feed/supported-activities.html">Activity Types List</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="body page-a-feedcallback-payload">
+        <div class="header-nav">
+          <div class="right">
+          </div>
+        </div>
+        <div class="markdown-body"><h1 id="the-callback-payload">The Callback Payload</h1>
+<p>Route4Me immediately submits a payload to your <a href="provide-callback-url.html">Activity Feed&apos;s callback URL</a> each time it detects a <a href="supported-activities.html">supported activity or event</a> that occurred either from your account or anyone from your team members.</p>
+<p>The payload is a JSON object that represents or associates with the activity that just occurred. Route4Me submits a payload for each event that happened.</p>
+<p>Below is an example from a &quot;Route Optimized&quot; activity.</p>
+<pre><code>{
+  &quot;optimization_problem_id&quot;:&quot;AY803F567829383C659BB81DEE5DEAX3&quot;,
+  &quot;route_id&quot;:&quot;BCCBB11E0DA5B793C7A9B10C54443344&quot;,
+  &quot;member_id&quot;:&quot;110111&quot;,
+  &quot;activity_type&quot;:&quot;route-optimized&quot;,
+  &quot;activity_id&quot;:&quot;8D10678B2BACCB72D923FDA5B178C96M&quot;,
+  &quot;activity_timestamp&quot;:0588977903,
+  &quot;activity_message&quot;:&quot;Directions prepared for route &apos;Supermarket Deliveries&apos;&quot;,
+  &quot;remote_ip&quot;:0,
+  &quot;day_id&quot;:3376,
+  &quot;device_type&quot;:&quot;web&quot;,
+  &quot;root_owner_member_id&quot;:&quot;110111&quot;,
+  &quot;activity_day_id&quot;:3376,
+  &quot;account_type_id&quot;:&quot;126&quot;,
+  &quot;member_level&quot;:0,
+  &quot;root_owner_member_api_key&quot;:&quot;AXD8A3DD49FB3271C88897F49C3F9699&quot;,
+  &quot;root_owner_member_email&quot;:&quot;john_doe@route4me.com&quot;
+}
+</code></pre>
+<p>Now, the properties of the JSON object vary depending on the activity. Some activities either have more or fewer features than others. But no matter what event occurred, the common properties are always present. Here&apos;s a list of them:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Key</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">activity_id</td>
+<td style="text-align:left">The ID of the activity or event that occurred.</td>
+</tr>
+<tr>
+<td style="text-align:left">activity_type</td>
+<td style="text-align:left">Short name for the activity that occurred. It can be one of the constant strings used to describe <a href="supported-activities.html">the activities logged by the Activity Feed</a>.</td>
+</tr>
+<tr>
+<td style="text-align:left">activity_message</td>
+<td style="text-align:left">Describes and provides information about the activity that occurred.</td>
+</tr>
+<tr>
+<td style="text-align:left">activity_timestamp</td>
+<td style="text-align:left">The time, in Unix Epoch, when the activity occurred.</td>
+</tr>
+<tr>
+<td style="text-align:left">member_id</td>
+<td style="text-align:left">The member or user ID of the user that initiated the activity.</td>
+</tr>
+<tr>
+<td style="text-align:left">device_type</td>
+<td style="text-align:left">The device used by the user to run the Route4Me application (web or mobile) and initiate the activity that occurred.</td>
+</tr>
+<tr>
+<td style="text-align:left">remote_ip</td>
+<td style="text-align:left">The IP address of the computer.</td>
+</tr>
+<tr>
+<td style="text-align:left">day_id</td>
+<td style="text-align:left">An integer value that serves as the ID of the day the activity occurred.</td>
+</tr>
+<tr>
+<td style="text-align:left">activity_day_id</td>
+<td style="text-align:left">Value is similar to the value of the <code>day_id</code> property.</td>
+</tr>
+<tr>
+<td style="text-align:left">account_type_id</td>
+<td style="text-align:left">The ID representing the account type.</td>
+</tr>
+<tr>
+<td style="text-align:left">member_level</td>
+<td style="text-align:left">A number indicating a user&apos;s level. It&apos;s <code>0</code> for account owners, while a non-zero value for <a href="https://support.route4me.com/managing-users-and-team-members/">other user types</a>.</td>
+</tr>
+<tr>
+<td style="text-align:left">root_owner_member_id</td>
+<td style="text-align:left">The account owner&apos;s member ID.<br><br>The account owner is the top-level user who owns the Route4Me account and to whom the subscription is billed. All other types of users (Administrator, Route Planner, Driver, etc.) are under or belongs to this user.</td>
+</tr>
+<tr>
+<td style="text-align:left">root_owner_member_api_key</td>
+<td style="text-align:left">The account owner&apos;s API key.</td>
+</tr>
+<tr>
+<td style="text-align:left">root_owner_member_email</td>
+<td style="text-align:left">The account owner&apos;s email.</td>
+</tr>
+</tbody>
+</table>
+<p>Among the properties listed above, the useful ones are <code>activity_type</code>, <code>activity_message</code>, and <code>member_id</code>.</p>
+<p>The <code>activity_type</code> property helps you identify <a href="supported-activities.html">what activity the payload is associated with</a>, and because of it, it&apos;s considered as the most useful of all the properties. Your callback URL can programmatically filter for this property so that you can process and respond accordingly only to the activities you are interested in.</p>
+<p>As an example, let&apos;s say you want your Route4Me workflow to make use of <a href="https://www.twilio.com/sms">Twilio&apos;s SMS service</a> to send you text messages every time a driver of yours <a href="https://support.route4me.com/tracking-route-progress-ipad/">leaves and marks each of his or her destinations as &quot;Mark as Visited&quot;</a>. To do this, the code that processes the payload in your callback URL must check for the <code>mark-destination-visited</code> value of the <code>activity_type</code> property. After that, use Twilio&apos;s SMS API to send a text message to your phone.</p>
+<p>Now, the other two useful properties mentioned earlier are <code>activity_message</code> and <code>member_id</code>. These properties provide a detailed description of the activity and the ID of the Route4Me user that initiated it, respectively.</p>
+<p>Lastly, it&apos;s worth mentioning that most supported activities are related to route-specific operations. Their payload generally has a <code>route_id</code> property and depending on the specific event, includes either a <code>route_destination_id</code> or <code>optimization_problem_id</code> property. These properties will come in handy if ever you decide to use or access the endpoints of the <a href="https://route4me.io/docs/#routes">Route resource</a> of the <a href="https://route4me.io/docs/#platform-apis">Route4Me Platform API</a>.</p>
+<p>The main takeaway in working with the payload is familiarity with the activity that sent it and knowing the properties you need so that you can respond according to your desired workflow.</p>
+
+        </div>
+        <div class="footer-nav">
+          <div class="left"><a href="../a-feed/provide-callback-url.html"><span class="title">Providing a Callback/Webhook URL for Receiving Activity Feed Notifications</span></a></div>
+          <div class="right"><a href="../a-feed/supported-activities.html"><span class="label">Next: </span><span class="title">Activity Types List</span></a></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

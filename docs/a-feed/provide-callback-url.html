@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/style.css?t=90051322">
+    <link rel="stylesheet" href="../style.css?t=5773309e">
+    <script src="../assets/script.js?t=93f1a66c"></script>
+    <script src="https://use.fontawesome.com/ea731dcb6f.js"></script>
+    <title>Providing a Callback/Webhook URL for Receiving Activity Feed Notifications - Route4Me API Tutorials</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="menu toc-menu">
+        <ul>
+          <li class="menu-item -level-0 -parent">
+            <ul class="submenu">
+              <li class="menu-item -level-1"><a class="link title  link-index" href="../index.html">Route4Me API Tutorials</a>
+              </li>
+              <li class="menu-item -level-1 -parent"><a class="link title  link-a-feed" href="../a-feed/index.html">Activity Feed</a>
+                <ul class="submenu">
+                  <li class="menu-item -level-2"><a class="link title -active link-a-feedprovide-callback-url" href="../a-feed/provide-callback-url.html">Providing a Callback/Webhook URL for Receiving Activity Feed Notifications</a>
+                    <ul class="headings heading-list">
+                      <li class="heading-item -depth-2"><a class="hlink link-using-a-webhook-testing-service" href="#using-a-webhook-testing-service">Using a Webhook Testing Service</a>
+                      </li>
+                      <li class="heading-item -depth-2"><a class="hlink link-testing-the-callback-url-and-inspecting-the-data-sent-by-route4me" href="#testing-the-callback-url-and-inspecting-the-data-sent-by-route4me">Testing the Callback URL and Inspecting the Data Sent by Route4Me</a>
+                        <ul class="heading-list -depth-2">
+                          <li class="heading-item -depth-3"><a class="hlink link-performing-and-monitoring-a-route-optimized-activity" href="#performing-and-monitoring-a-route-optimized-activity">Performing and Monitoring a Route Optimized Activity</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="menu-item -level-2"><a class="link title  link-a-feedcallback-payload" href="../a-feed/callback-payload.html">The Callback Payload</a>
+                  </li>
+                  <li class="menu-item -level-2"><a class="link title  link-a-feedsupported-activities" href="../a-feed/supported-activities.html">Activity Types List</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="body page-a-feedprovide-callback-url">
+        <div class="header-nav">
+          <div class="right">
+          </div>
+        </div>
+        <div class="markdown-body"><h1 id="providing-a-callbackwebhook-url-for-receiving-activity-feed-notifications">Providing a Callback/Webhook URL for Receiving Activity Feed Notifications</h1>
+<p><a href="supported-activities.html">Most activities or events</a> in your Route4Me account (whether you use the <a href="https://www.route4me.com">web application</a> or its <a href="https://route4me.com/mobile">mobile apps</a>) such as your driver entering or leaving a geofenced area, marking an address as visited, or just adding a note to one of your destinations, are logged into your Activity Feed. You can subscribe and receive data about these activities in a real-time manner by providing a callback or webhook URL for your Activity Feed. The URL can either be from your web application&#x2019;s URL or a third-party service such as Zapier or Integromat, that can then interpret and act upon the data it receives from Route4Me. Then, depending on your needs or workflow, what you do with the data Route4Me gives you is up to you. You can send an SMS message to your users or customers, log the data to a backup database, or update your external CRM software. Your only limit is your imagination.</p>
+<p>To provide a callback URL for your Activity Feed, log in to your account in Route4Me and click the &#x201C;My Account&#x201D; menu (the bottommost menu/icon) in the sidebar, and then click &#x201C;Account Settings&#x201D;.</p>
+<img src="../images/activity-feed-1.png" alt>
+<p id="callback-url-setting">Scroll below until you see the &#x201C;Activity Feed Settings&#x201D; section. Provide your callback URL and make sure you select &#x201C;POST&#x201D; as the callback method. Depending on your needs, you might also opt to use &#x201C;PUT&#x201D; as the method. Click &#x201C;Save&#x201D; to save your settings.</p>
+<img src="../images/activity-feed-2.png" alt>
+<p>Your callback URL is now ready to receive data from Route4Me.</p>
+<img src="../images/activity-feed-3.jpg" alt>
+<h2 id="using-a-webhook-testing-service">Using a Webhook Testing Service</h2>
+<p>For development and testing purposes, you can use a webhook testing website or service that can generate for you a random webhook URL. You can then use the URL as the callback URL of your Activity Feed (<a href="#callback-url-setting">see section above</a>) and use its website to inspect and study the payload Route4Me sends to the webhook URL.</p>
+<p>Select from any of these websites or services:</p>
+<ul>
+<li><a href="https://webhook.site">Webhook.site</a></li>
+<li><a href="https://waithook.com/">WaitHook</a></li>
+<li><a href="https://requestbin.com">RequestBin</a></li>
+</ul>
+<p id="matching-urls">
+As an example, the following images show the generated URL from <a href="https://webhook.site">Webhook.site</a> and using it as the callback URL of a Route4Me account&apos;s Activity Feed.
+</p>
+<img src="../images/activity-feed-4.png" alt>
+<img src="../images/activity-feed-5.png" alt>
+<p>The next thing you need to do is to test the webhook URL. Kindly follow along as the next section demonstrates how to do this.</p>
+<h2 id="testing-the-callback-url-and-inspecting-the-data-sent-by-route4me">Testing the Callback URL and Inspecting the Data Sent by Route4Me</h2>
+<p>Once you&apos;ve configured your Activity Feed&apos;s callback URL with the generated URL of your chosen webhook testing service/website, it&apos;s now time to test the generated URL if Route4Me can detect or recognize it (in most cases, it does).</p>
+<p>Every time Route4Me detects activity or an event in your account, it sends a payload to your Activity Feed&apos;s callback URL. Some examples of these events are the &quot;Mark Destination as Departed/Visited&quot;, &quot;Note Inserted&quot;, and &quot;Route Optimized&quot;. For more information, here&apos;s <a href="supported-activities.html">a list of the supported activities or events</a> that are logged into the Activity Feed.</p>
+<p>We&apos;ll use the <a href="https://www.route4me.com">Route4Me web application</a> to perform an activity and the <a href="https://webhook.site">Webhook.site</a> webhook testing website to monitor and inspect the payload. For our examples, we demonstrate performing a &quot;Note Inserted&quot; and &quot;Route Optimized&quot; activity.</p>
+<p class="notice">
+To follow the examples, first, log in to your Route4Me account using the web application and ensure that you have some route records that you can play with.
+</p><p>Also, ensure that your Activity Feed&apos;s callback URL is also the same URL that Webhook.site is listening (waiting for requests) to.</p>
+<p></p>
+<h3 id="performing-and-monitoring-a-note-inserted-activity">Performing and Monitoring a Note Inserted Activity</h3>
+<p>To perform a &quot;Note Inserted&quot; activity, select any route in your <a href="https://support.route4me.com/using-the-routes-list-to-view-planned-routes/">Routes List</a> and click on its name to open it.</p>
+<img src="../images/activity-feed-6.png" alt>
+<p>Once opened, select and click on the address or stop you would want to add a note. Next, click the &quot;Add a Note&quot; button.</p>
+<img src="../images/activity-feed-7.png" alt>
+<p>Provide the details of the note with values matching the ones in the screenshot below and then click &quot;Add Note&quot; when finished.</p>
+<img src="../images/activity-feed-8.png" alt>
+<p>Once your new note is added, you can then check your Activity Feed and see that the note inserting activity is logged there.</p>
+<img src="../images/activity-feed-9.png" alt>
+<p>Now, return back to Webhook.site and see if your webhook URL can receive a payload from Route4Me. The payload, which is a JSON object, can be seen at the bottom part of the page. If you can see it, then Route4Me can see or recognize your webhook URL. If not, then review again <a href="#matching-urls">if your Activity Feed&apos;s callback URL matches the one that Webhook.site is currently listening</a>.</p>
+<img src="../images/activity-feed-10.png" alt>
+<p>Next, copy and paste the JSON object to your text editor. If you want, you can also use <a href="https://jsonformatter.curiousconcept.com/">a JSON Formatter</a> to make it more readable.</p>
+<img src="../images/activity-feed-11.png" alt>
+<p>Familiarize yourself with the structure of the JSON object as this is what your callback URL will be receiving coming from Route4Me. Take note though that the JSON object&apos;s properties vary depending on the activity or event that occurred. Specific activities have more or fewer properties than others. For your reference, we have written a separate <a href="callback-payload.html">article that describes the callback payload</a> (the JSON object) in detail.</p>
+<p>In our example, the properties we&apos;re interested in are <code>activity_type</code>, <code>route_id</code>, and <code>route_destination_id</code>. Checking for the value of the <code>activity_type</code> property is a given, as it&apos;s the label or name of the activity or event that just occurred. If you are monitoring many activities, use the <code>activity_type</code> property to filter them from the rest of the others.</p>
+<p>Meanwhile, you can also use the <code>route_id</code> and <code>route_destination_id</code> properties if you need to know the actual note that was inserted. Our <a href="https://route4me.io/docs/#platform-apis">Platform API</a> has a <a href="https://route4me.io/docs/#notes">Note resource</a> where you can query for notes attached to a specific address or stop within a route.</p>
+<p>To retrieve the notes attached to an address, you&apos;ll need to use the <code>route_id</code> and <code>route_destination_id</code> properties as query string parameters when making a request to <a href="https://route4me.io/docs/#get-notes">one of the endpoints of the Note resource</a>.</p>
+<p>Now armed with information from the payload, what you do next or how you&apos;ll proceed is ultimately up to you.</p>
+<h3 id="performing-and-monitoring-a-route-optimized-activity">Performing and Monitoring a Route Optimized Activity</h3>
+<p>To perform a &quot;Route Optimized&quot; activity, select any route in your Routes List and click on the gear icon beside it.</p>
+<img src="../images/activity-feed-12.png" alt>
+<p>Then, click &quot;Re-optimize Route&quot; to start the optimization process.</p>
+<img src="../images/activity-feed-13.png" alt>
+<p>Once done, check your Activity Feed as the activity is logged there.</p>
+<img src="../images/activity-feed-14.png" alt>
+<p>Then, return to Webhook.site and check the payload sent to your webhook URL. You would see something similar to this screenshot below:</p>
+<img src="../images/activity-feed-15.jpg" alt>
+<p><a href="#example1">Identical to the previous example</a>, the <code>activity_type</code> property is your definitive guide to determining what type of activity or event the payload is associated with. The <code>route_id</code> property is also useful if you are interested in knowing more about the optimized route.</p>
+<p>If you need more information regarding the optimized route, you can make a request to one of the endpoints of our <a href="https://route4me.io/docs/#platform-apis">Platform API&apos;s</a> <a href="https://route4me.io/docs/#get-a-route">Route resource</a>.</p>
+<hr>
+<p>Although as an example we used a sample webhook URL provided by a webhook URL testing service or website, <strong>the best way to take advantage of these notifications is to provide a custom URL or endpoint from your own web application or web service</strong>. This way, your application can process the incoming data (through code) and then programmatically make decisions based on it.</p>
+<p>This concludes our tutorial for providing a callback or webhook URL for receiving real-time notifications from your Activity Feed.</p>
+
+        </div>
+        <div class="footer-nav">
+          <div class="left"><a href="../a-feed/index.html"><span class="title">Activity Feed</span></a></div>
+          <div class="right"><a href="../a-feed/callback-payload.html"><span class="label">Next: </span><span class="title">The Callback Payload</span></a></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

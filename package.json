@@ -1,0 +1,10 @@
+{
+  "name": "new-tutorials",
+  "version": "1.0.0",
+  "description": "New articles and tutorials using the Route4Me API",
+  "author": "Elmer A. Sia",
+
+  "devDependencies": {
+    "docpress": "0.7.6"
+  }
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/style.css?t=90051322">
+    <link rel="stylesheet" href="../style.css?t=5773309e">
+    <script src="../assets/script.js?t=93f1a66c"></script>
+    <script src="https://use.fontawesome.com/ea731dcb6f.js"></script>
+    <title>Activity Types List - Route4Me API Tutorials</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="menu toc-menu">
+        <ul>
+          <li class="menu-item -level-0 -parent">
+            <ul class="submenu">
+              <li class="menu-item -level-1"><a class="link title  link-index" href="../index.html">Route4Me API Tutorials</a>
+              </li>
+              <li class="menu-item -level-1 -parent"><a class="link title  link-a-feed" href="../a-feed/index.html">Activity Feed</a>
+                <ul class="submenu">
+                  <li class="menu-item -level-2"><a class="link title  link-a-feedprovide-callback-url" href="../a-feed/provide-callback-url.html">Providing a Callback/Webhook URL for Receiving Activity Feed Notifications</a>
+                  </li>
+                  <li class="menu-item -level-2"><a class="link title  link-a-feedcallback-payload" href="../a-feed/callback-payload.html">The Callback Payload</a>
+                  </li>
+                  <li class="menu-item -level-2"><a class="link title -active link-a-feedsupported-activities" href="../a-feed/supported-activities.html">Activity Types List</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="body page-a-feedsupported-activities">
+        <div class="header-nav">
+          <div class="right">
+          </div>
+        </div>
+        <div class="markdown-body"><h1 id="activity-types-list">Activity Types List</h1>
+<p>Here&apos;s a list of Route4Me activities or events that are supported and logged by the Activity Feed. Keep in mind that these activities don&apos;t account for all the actions that could be done in a Route4Me account. They are merely a fraction of it.</p>
+<p>Included for each activity is the constant string value of the <code>activity_type</code> property when you receive <a href="callback-payload.html">the callback payload</a> from <a href="provide-callback-url.html">your Activity Feed&apos;s callback URL</a> and with a description of how the activity came about.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">No.</th>
+<th style="text-align:left">Activity Type</th>
+<th style="text-align:left">Constant String</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:left">Remove Avoidance Zone</td>
+<td style="text-align:left">&quot;area-removed&quot;</td>
+<td style="text-align:left">Triggered/logged when removing an existing avoidance zone.</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:left">Create New Avoidance Zone</td>
+<td style="text-align:left">&quot;area-added&quot;</td>
+<td style="text-align:left">Triggered when adding/creating a new avoidance zone.</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:left">Edit Avoidance Zone</td>
+<td style="text-align:left">&quot;area-updated&quot;</td>
+<td style="text-align:left">Triggered when updating (renaming, changing points) an existing avoidance zone.</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:left">Remove Address From Route</td>
+<td style="text-align:left">&quot;delete-destination&quot;</td>
+<td style="text-align:left">Triggered when <a href="https://support.route4me.com/deleting-addresses-from-an-existing-route/">deleting/removing an address or stop within a route</a>.</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:left">Add New Address</td>
+<td style="text-align:left">&quot;insert-destination&quot;</td>
+<td style="text-align:left">Triggered when <a href="https://support.route4me.com/inserting-an-address-into-a-route-from-the-route-editor/">adding a new stop within a route</a>.</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:left">Route Deviation</td>
+<td style="text-align:left">&quot;destination-out-sequence&quot;</td>
+<td style="text-align:left">Triggered when a driver marks an address as visited before any other ones before it in the sequence. This means that the driver didn&apos;t follow the series of addresses in a route.</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td style="text-align:left">User Arrived Early</td>
+<td style="text-align:left">&quot;driver-arrived-early&quot;</td>
+<td style="text-align:left">Triggered when a driver arrives early at an address and marks it as &quot;visited&quot;.</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:left">User Arrived Late</td>
+<td style="text-align:left">&quot;driver-arrived-late&quot;</td>
+<td style="text-align:left">Triggered when a driver arrives late at an address and marks it as &quot;visited&quot;.</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td style="text-align:left">User Arrived On Time</td>
+<td style="text-align:left">&quot;driver-arrived-on-time&quot;</td>
+<td style="text-align:left">Triggered when a driver arrives on time at an address and marks it as &quot;visited&quot;.</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:left">Geofence Triggered Check Out</td>
+<td style="text-align:left">&quot;geofence-left&quot;</td>
+<td style="text-align:left">Triggered when a driver leaves a <a href="https://support.route4me.com/setting-automatic-visitation-triggers-and-viewing-your-geofence-activities/">geofenced area</a>.</td>
+</tr>
+<tr>
+<td style="text-align:right">11</td>
+<td style="text-align:left">Geofence Triggered Check In</td>
+<td style="text-align:left">&quot;geofence-entered&quot;</td>
+<td style="text-align:left">Triggered when a driver enters a geofenced area.</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:left">Mark Address Departed</td>
+<td style="text-align:left">&quot;mark-destination-departed&quot;</td>
+<td style="text-align:left">Triggered when an address is marked as &quot;departed&quot;.</td>
+</tr>
+<tr>
+<td style="text-align:right">13</td>
+<td style="text-align:left">Mark Address Visited</td>
+<td style="text-align:left">&quot;mark-destination-visited&quot;</td>
+<td style="text-align:left">Triggered when an address is marked as &quot;visited&quot;.</td>
+</tr>
+<tr>
+<td style="text-align:right">14</td>
+<td style="text-align:left">Created Team Member</td>
+<td style="text-align:left">&quot;member-created&quot;</td>
+<td style="text-align:left">Triggered when <a href="https://support.route4me.com/managing-users-and-team-members/">creating a new user</a>.</td>
+</tr>
+<tr>
+<td style="text-align:right">15</td>
+<td style="text-align:left">Delete Team Member</td>
+<td style="text-align:left">&quot;member-deleted&quot;</td>
+<td style="text-align:left">Triggered when deleting an existing user.</td>
+</tr>
+<tr>
+<td style="text-align:right">16</td>
+<td style="text-align:left">Modified Member</td>
+<td style="text-align:left">&quot;member-modified&quot;</td>
+<td style="text-align:left">Triggered when updating the details of an existing user.</td>
+</tr>
+<tr>
+<td style="text-align:right">17</td>
+<td style="text-align:left">Change Address Sequence</td>
+<td style="text-align:left">&quot;move-destination&quot;</td>
+<td style="text-align:left">Triggered when manually <a href="https://support.route4me.com/changing-the-order-of-addresses-in-a-planned-route/">changing the order or sequence of a stop</a> within a route.</td>
+</tr>
+<tr>
+<td style="text-align:right">18</td>
+<td style="text-align:left">Note Insert</td>
+<td style="text-align:left">&quot;note-insert&quot;</td>
+<td style="text-align:left">Triggered when <a href="https://support.route4me.com/viewing-and-adding-notes-in-the-route-editor/">adding a note to a stop or address</a> within a route.</td>
+</tr>
+<tr>
+<td style="text-align:right">19</td>
+<td style="text-align:left">Delete Route</td>
+<td style="text-align:left">&quot;route-delete&quot;</td>
+<td style="text-align:left">Triggered when <a href="https://support.route4me.com/deleting-routes/">removing/deleting a route</a>.</td>
+</tr>
+<tr>
+<td style="text-align:right">20</td>
+<td style="text-align:left">Route Optimized</td>
+<td style="text-align:left">&quot;route-optimized&quot;</td>
+<td style="text-align:left">Triggered when manually <a href="https://support.route4me.com/re-optimizing-a-route/">reoptimizing a route</a> or <a href="https://support.route4me.com/refreshing-the-directions-of-a-route/">refreshing its directions</a>. Also triggered when reordering the sequence of stops or addresses within a route.</td>
+</tr>
+<tr>
+<td style="text-align:right">21</td>
+<td style="text-align:left">Assigned Other User To Route</td>
+<td style="text-align:left">&quot;route-owner-changed&quot;</td>
+<td style="text-align:left">Triggered when <a href="https://support.route4me.com/assigning-users-and-vehicles-to-routes/">assigning a user to an existing route</a>.</td>
+</tr>
+<tr>
+<td style="text-align:right">22</td>
+<td style="text-align:left">Route Duplication</td>
+<td style="text-align:left">&quot;route-duplicate&quot;</td>
+<td style="text-align:left">Triggered when <a href="https://support.route4me.com/duplicating-routes/">duplicating an existing route</a>.</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:left">Update Address Attribute</td>
+<td style="text-align:left">&quot;update-destinations&quot;</td>
+<td style="text-align:left">Triggered when you add custom data to an address.</td>
+</tr>
+<tr>
+<td style="text-align:right">24</td>
+<td style="text-align:left">User Message</td>
+<td style="text-align:left">&quot;user_message&quot;</td>
+<td style="text-align:left">Triggered when a user communicates or chats with its team members using the <a href="https://support.route4me.com/team-communication-with-the-two-way-real-time-chat/">Two-Way Real-Time Chat</a> feature or through a custom application that uses the <a href="https://route4me.io/docs/#log-a-specific-message">Activity Feed resource</a> of the Route4Me API.</td>
+</tr>
+<tr>
+<td style="text-align:right">25</td>
+<td style="text-align:left">Route Merging</td>
+<td style="text-align:left">&quot;route-merge&quot;</td>
+<td style="text-align:left">Triggered when two or more <a href="https://support.route4me.com/merging-multiple-routes-at-the-same-time/">routes are consolidated to create one route</a>.</td>
+</tr>
+<tr>
+<td style="text-align:right">26</td>
+<td style="text-align:left">Rename Route</td>
+<td style="text-align:left">&quot;route-update&quot;</td>
+<td style="text-align:left">Triggered when <a href="https://support.route4me.com/renaming-a-route/">renaming a route</a>.</td>
+</tr>
+<tr>
+<td style="text-align:right">27</td>
+<td style="text-align:left">Approved To Execute</td>
+<td style="text-align:left">&quot;approved-to-execute&quot;</td>
+<td style="text-align:left">Triggered when a user approves a route to start executing.</td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+        <div class="footer-nav">
+          <div class="left"><a href="../a-feed/callback-payload.html"><span class="title">The Callback Payload</span></a></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
